@@ -65,6 +65,7 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
     Session currentSession = entityManager.unwrap(Session.class);
 
     // delete object with primary key
+    @SuppressWarnings("rawtypes") // suppresses warning with Hibernate query
     Query query = currentSession.createQuery("delete from Employee where id=:employeeId");
     query.setParameter("employeeId", id);
     query.executeUpdate();
